@@ -10,7 +10,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
 
-BANNED_WORDS = {"sexy", "nudes", "violence"}
+BANNED_WORDS = {"sexy", "nudes", "violence", "xxx"}
 RAG_API = "http://localhost:8000/predict"
 
 @client.event
