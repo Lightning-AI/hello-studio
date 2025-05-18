@@ -20,6 +20,7 @@ async def on_message(message):
 
     print(f'message received: {message.content}')
     if any(word in message.content.lower() for word in BANNED_WORDS):
+        print('⚠️ Message removed due to inappropriate content.')
         await message.delete()
         await message.channel.send(f"⚠️ Message removed due to inappropriate content.")
         return
