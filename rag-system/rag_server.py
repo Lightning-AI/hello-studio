@@ -26,13 +26,11 @@ class SimpleRAGAPI(ls.LitAPI):
         self.embeddings = self.embedder.encode(texts, convert_to_tensor=True)
 
     def decode_request(self, request):
-        print('-' * 80)
-        print(request)
-        print('-' * 80)
         return request["query"]
 
     def predict(self, query):
-        print(query)
+        print('-' * 80)
+        print(f'RAG question: {query}')
         # Embed the query and find top matches
         query_embedding = self.embedder.encode(query, convert_to_tensor=True)
         hits = util.semantic_search(query_embedding, self.embeddings, top_k=3)[0]
@@ -44,7 +42,9 @@ class SimpleRAGAPI(ls.LitAPI):
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}]
         )
-        return response.choices[0].message.content
+        answer = response.choices[0].message.content
+        print(f'RAG answer: {answer}')
+        return answer
 
     def encode_response(self, output):
         return {"answer": output}
