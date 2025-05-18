@@ -1,0 +1,12 @@
+# For the web scraper
+beautifulsoup4
+requests
+
+# For the RAG server
+litserve
+openai
+sentence-transformers
+torch  # needed by sentence-transformers
+
+# For the Discord bot
+discord.py
